@@ -1,0 +1,18 @@
+<div>
+    <h1>This is todolist page.</h1>
+
+    <ul>
+        {% for todolist_item in all_items %}
+            <li>{{ todolist_item.content }}
+                <form action="/deletetodolist/{{todolist_item.id}}/" style="display: inline;" method="post">{% csrf_token %}
+                    <input type="submit" value="Delete"/>
+                 </form>
+             </li>
+        {% endfor %}
+    </ul>
+
+    <form action="/addtodolist/" method="post">{% csrf_token %}
+        <input type="text" name="content"/>
+        <input type="submit" value="Add"/>
+    </form>
+</div>
